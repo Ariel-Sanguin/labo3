@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lan="es">
+<head>
+	<title>Electores de clase</title>
+	<meta charset="utf-8">
+
+	<style>
+		p.clasePrincipal {
+			text-align: left;
+			font-size: 35px;
+			font-family: arial;
+			font-weight: bold;
+		}
+
+		p.claseTitulo {
+			text-align: left;
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+		
+		p.claseAcotacion {
+			text-align: center;
+			font-size: 20px;
+			font-style: italic;
+			color: purple;
+			border-style: solid;
+			border-width: thin;
+			border-color: purple;
+		}
+
+		p.claseAyuda {
+			text-align: center;
+			font-size: 20px;
+			font-style: italic;
+			color: red;
+			border-style: solid;
+			border-width: thin;
+			border-color: red;
+			max-width: 50%
+		}
+		p.ContenidoComun{
+			text-align: left;
+			font-size: 15px;
+
+		}
+
+		p#idUnico {
+			text-align: center;
+			color: darkblue;
+			font-style: italic;
+			font-style: italic;
+			border-style: solid;
+			border-color: darkblue;
+			max-width: 25%;
+		}
+
+		span,p.claseDestacado {
+			text-align: left;
+			font-size: 23px;
+		}
+
+		img.ImagenAl50 {
+			max-width: 50%;
+		}
+
+	</style>
+</head>
+
+<body>
+	
+	<p class="clasePrincipal">En esta pagina no se deben escriboir etiquetas con atributo style </p>
+	
+	<p class="claseTitulo">Todo estilo se encuentra definido en la etiqueta style, dentro de la etiqueta head del documento</p>
+	
+	<p>Este parrafo contiene un grupo de palabaras delimitado por la etiqueta "span". El comienzo es aqui: <span class="claseDestacado">Grupo de palabras destacadas con el estilo claseDestacado</span></p>
+		
+	<p class="claseAcotacion">Este parrafo toma estilo definido en la etiqueta style en el header del documento como class="claseAcotacion"</p>
+
+	<p class="claseDestacado">Este parrafo toma estilo definido en la etiqueta style en el header del documento como class="claseDestacado"</p>
+
+	<p class="claseAyuda">Este parrafo corresponede a la clase "claseAyuda" y su estilo esta definido en el header</p>
+
+	<p class="ContenidoComun">Este parrafo eseta definido en la etiqueta style del header como class="ContenidoComun"</p>
+
+	<p id="idUnico">Este parrafo esta formateado por un estilo definod en la etiqueta style con un especificamente para este parrafo con id="idUnico"</p>
+
+	<p class="clasePrincipal">Todas las imagenes con la class="ImagenAl50" en esta pagina se encuentran limitadas al 50% del ancho del viewport mas alla de su tamaño real en pixeles </p>
+
+	<img src="./meerkat1.jpg" title="Suricata sentada" class="ImagenAl50">
+
+
+</body>
+</html>

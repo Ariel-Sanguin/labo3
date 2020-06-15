@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Centrado y padding</title>
+
+	<style>
+
+		h1 {
+			text-align: center;
+			font-size: 30px
+		}
+		
+		div.estilo1 {
+			margin: auto;
+			width: 50%;
+			background-color: lightblue;
+			overflow: auto;
+		}
+
+		div.estilo2 {
+			margin: auto;
+			width: 50%;
+			background-color: lightgreen;
+			overflow: auto;
+			padding-right: 10%;
+			padding-left: 10%;
+		}
+
+		div.estilo3 {
+			margin: auto;
+			width: 50%;
+			background-color: lightyellow;
+			padding-right: 10%;
+			padding-left: 10%;
+			box-sizing: border-box; /*hace que la separacion entre el contenido del div y el borde de este sea hacia adentro*/
+			overflow: auto;
+		}
+	</style>	
+</head>
+<body>
+
+	<h1>Los siguientes elementos tienen un ancho del 50% de la ventana</h1>
+
+	<div class="estilo1">
+		Texto en interior <br>
+		Texto en interior <br>
+		Texto en interior <br>
+		Texto en interior <br>
+	</div>
+
+	<div class="estilo2">
+		Texto en interior con padding y sin box-sizing <br>
+		Texto en interior con padding y sin box-sizing <br>
+		Texto en interior con padding y sin box-sizing <br>
+		Texto en interior con padding y sin box-sizing <br>
+	</div>
+
+	<div class="estilo3">
+		Texto en interior con padding y con box-sizing <br>
+		Texto en interior con padding y con box-sizing <br>
+		Texto en interior con padding y con box-sizing <br>
+		Texto en interior con padding y con box-sizing <br>
+	</div>
+</body>
+</html>

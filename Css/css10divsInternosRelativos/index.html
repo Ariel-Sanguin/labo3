@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style>
+		html, body {
+			margin: 0px;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		h1 {
+			margin: 0px;
+		}
+		div.contenedor {
+			width: 90%;
+			background-color: black;
+			overflow: auto;
+			margin: auto;
+		}
+
+		div.contenedorRelativo1 {
+			width: 90%;
+			margin-left: 0%;
+			margin-top: 10px;
+			background-color: green;
+			color: black;
+			font-size: 35px;
+			overflow: auto;
+		}
+
+		div.contenedorRelativo2 {
+			width: 60%;
+			overflow: auto;
+			background-color: darkred;
+			font-size: 35px;
+			margin-top: 25px;
+			margin-left: 20%;
+			margin-right: 20%;
+			box-sizing: border-box;
+			padding: 10px;
+		}
+
+		div.contenedorRelativo3 {
+			height: 150px;
+			width: 60%;
+			font-size: 30px;
+			margin-top: 15px;
+			margin-left: 30%;
+			margin-right: 20%;
+			background-color: purple;
+			padding: 10px;
+			box-sizing: border-box;
+			overflow: auto;
+		}
+		div.contenedorModal {
+			position: fixed;
+			top: 20%;
+			left: 30%;
+			opacity: 0.5;
+			overflow-y:auto;
+			visibility: visible;
+			z-index: 10;
+			height: 40%;
+			width: 35%;
+			font-size: 35px;
+			background-color: lightyellow;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="contenedor">
+		<h1>Divs relativos</h1>
+		<div class="contenedorRelativo1">Contenedor relativo clase 1</div>
+		<div class="contenedorRelativo1">Contenedor relativo clase 1</div>
+		<div class="contenedorRelativo2">Contenedor relativo clase 2</div>
+		<div class="contenedorRelativo2">
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+		</div>
+		<div class="contenedorRelativo2">
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+			Contenedor relativo clase 2<br>
+		</div>
+		<div class="contenedorRelativo3">
+			Contenedor clase 3<br>
+			Contenedor clase 3<br>
+			Contenedor clase 3<br>
+			Contenedor clase 3<br>
+			Contenedor clase 3<br>
+			Contenedor clase 3<br>
+			Contenedor clase 3<br>
+		</div>
+		<div class="contenedorRelativo2">
+			Contenedor clase 2<br>
+			Contenedor clase 2<br>
+		</div>
+		<div class="contenedorModal">
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+			Contenedor modal<br>
+
+		</div>
+	</div>
+
+</body>
+</html>

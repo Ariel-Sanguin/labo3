@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Divs internos en columna</title>
+	<meta charset="utf-8">
+	<style>
+		div.claseContenedor {
+			width: 90%;
+			overflow: auto;
+			background: lightyellow;
+			margin: auto;
+
+		}
+
+		div.claseImgText {
+			
+			margin: 10px;
+			font-size: 15px;
+			width: 30%;
+			background: darkred;
+			padding-left: 3%;
+			padding-right: 3%;
+			padding-top: 3%;
+			padding-bottom: 3%;
+			box-sizing: border-box;
+			float: left;
+			
+			
+		}
+
+		div.claseTexto {
+			
+			margin: 10px;
+			font-size: 15px;
+			width: 20%;
+			background: darkred;
+			padding-right: 3%;
+			padding-left: 3%;
+			padding-bottom: 3%;
+			padding-top: 3%;
+			overflow: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			float: left;
+		}
+		img {
+			max-width: 90%;
+			max-height: 90%;
+			
+			align-self: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="claseContenedor">
+		<div class="claseImgText">
+			1. Un lobo mexicano(Canis lupus baileyi), una subespecie del lobo gris, fotografiado en el "Wild Canid Survival and Research Center" en St. Louis, Missouri.
+			<img src="./wolf2.jpg">
+		</div>
+		<div class="claseTexto">2 datos para inclouir en esta columna. Datos para incluir en esta columna. Datos para incluir en 	esta columna. Datos para incluir en esta columna. Datos para incluir en esta columna 
+		</div>
+		<div class="claseTexto">3 datos para inclouir en esta columna. Datos para incluir en esta columna. Datos para incluir en 	esta columna. Datos para incluir en esta columna. Datos para incluir en esta columna</div>
+		<div class="claseTexto">2 datos para inclouir en esta columna. Datos para incluir en esta columna. Datos para incluir en 	esta columna. Datos para incluir en esta columna. Datos para incluir en esta columna</div>
+		<div class="claseTexto">2 datos para inclouir en esta columna. Datos para incluir en esta columna. Datos para incluir en 	esta columna. Datos para incluir en esta columna. Datos para incluir en esta columna</div>
+		<div class="claseImgText"> Las suricatas son de las pocas especies mamiferas que asumen roles especificos para asegurar el bienestar de su familia. La socciedad de las suricatas se compone de una jerarquia con las hembras en la cima.
+			<img src="./meerkat2.jpg">
+		</div>
+	</div>
+
+</body>
+</html>

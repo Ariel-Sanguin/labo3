@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Selectores de Evento</title>
+	<meta charset="utf-8">
+	<style >
+		div.claseContenedor {
+			width: 90%;
+			overflow: auto;
+			background: lightyellow;
+			margin: auto;
+
+		}
+
+		div.btopcion {
+			height:30px;
+			width:80px;
+			background-color:lightgrey;
+			font-size:15px;
+			color:black;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			border:solid;
+			margin:1px;
+			float:left;
+		}
+		div.btopcion:hover {
+			background-color: blue;
+			color: white;
+		}
+		div.btopcion:active {
+			background-color: darkred;
+			color: white;
+		}
+		div.nuevaFila {
+			margin: 0;
+			margin-bottom: 20px;
+			clear: both;
+		}
+		input {
+			display: block;
+			width: 150px;
+		}
+		input:hover {
+			background-color: lightgreen;
+		}
+		input:focus {
+			background-color: lightgreen;
+		}
+		div.conImagen {
+			height: 150px;
+			width: 150px;
+			border: solid;
+			color: black;
+			margin: 2px;
+			float: left;
+		}
+		div.conImagen:active {
+			height: 400px;
+			width: 400px;
+			color: darkred;
+		}
+		img {
+			max-width: 80%;
+			max-height: 80%;	
+		}
+		a:link {color: black; text-decoration: none;}
+		a:hover {color: white;}
+		a:active {color: white;}
+	</style>
+</head>
+<body>
+	
+	<div class="claseContenedor">
+		<div class="btopcion"><a href="./opcion1.html"  title="Opcion 1" target=_blank>Opcion 1</a></div>
+		<div class="btopcion"><a href="./opcion2.html" title="Opcion 2">Opcion 2</a></div>
+		<div class="btopcion"><a href="./opcion3.html" title="Opcion 3">Opcion 3</a></div>
+		<div class="nuevaFila"></div>
+		<label for="apellido">Apellido</label><br>
+		<input type="text" name="apellido" title="Complete con su apellido">
+		<label for="nombre">Nombre</label><br>
+		<input type="text" name="nombre" title="Complete con su nombre">
+		<div class="conImagen">
+			<img src="./Cu.gif">
+		</div>
+		<div class="conImagen">
+			<img src="./witcher01.jpg">
+		</div>
+		<div class="conImagen">
+			<img src="./wolf2.jpg">
+		</div>
+		<div class="conImagen">
+			<img src="./meerkat2.jpg">
+		</div>
+	</div>
+ 
+</body>
+</html>

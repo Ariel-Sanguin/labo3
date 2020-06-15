@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html	lang="es">
+<head>
+<title> Page title </title>
+<meta charset="utf-8">
+</head>
+<body>
+
+<h1> Primer parrafo corto (incluye el retorno de carro) 
+	<br>
+</h1>
+
+<h2> Veamos que sale
+	<br>
+</h2>
+
+<h2> Unos enlaces
+	<br>
+</h2>
+
+<ul>
+	<li>
+		<a href="https://www.youtube.com/watch?v=KiUYMdt_jig" target="_blank"> 
+				Bad Religion- Shattered Faith
+		</a>
+	</li>
+
+	<li>
+		<a href="https://www.google.com" target="_blank">
+			Google
+		</a>
+	</li>
+
+	<li>
+		<a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">
+			Info HTML
+		</a>
+	</li>
+</ul>
+
+<br>
+<hr/>
+	<a href="./EnlaceOtraPestana.html" target="_blank">
+		Abrir enlace en ota ventana
+	</a>
+	&nbsp;
+	<a href="./MismaVentana.html">
+		 Abrir enlace en misma ventana
+	</a>
+	&nbsp;
+	<a href="#Anclaje">
+		Ancla a otro punto de la pagina
+	</a>
+<hr/>
+
+<h1> Aqui va un texto
+	<br>
+</h1>
+<p>
+	Aqui estoy escribiendo lo primero que me viene a la mente. Podran imaginar que, siendo
+	las 4:37 de la manana mi lucidez para la escritura no esta ni cerca de ser la mejor, sepan disculpar.<br>
+	Aunque pensandolo bien mi lucidez nunca es la mejor independientemente del horario...demonios, otra vez
+	estoy escribiendo tonterias.
+</p>
+
+<h2> Seccion de etiquetas semanticas estructurales mas importantes:
+	<br>
+</h2>
+
+<ul>
+	<li> HEADER
+	</li>
+
+	<li> FOOTER
+	</li>
+
+	<li> SECTION
+	</li>
+
+	<li> ARTICLE
+	</li>
+
+	<li> NAV
+	</li>
+
+	<li> ADRESS
+	</li>
+</ul>
+<p>
+	Las etiquetas semanticas estructurales esran relacionadas directamente con el significado del contenido y no con los stilos ni las posiciones dentro del documento.
+</p>
+
+<h2> 
+	Reglas para etiquetas semanticas
+</h2>
+
+<ul>
+	<li> Los distintos tipos de contenidp se pueden asociar a las etiquetas SECTION.
+	</li>
+	<li>
+		Las unidades de contenido se asocian a la etiqueta ARTICLE. O sea que un SECTION anida varios ARTICLES.
+	</li>
+	<li>
+		Las etiquetas HEADER y FOOTER pueden swer anidadas dentro de otras HEADER o FOOTER. Osea un FOOTER podria anidar otro HEADER y FOOTER.
+	</li>
+	<li>
+		La etiqueta NAV debe ser unica en el documento y corresponde a los elemnetos de navegacion del documento.
+	</li>
+	<li>
+		Reservar la etiqueta h1 para usar dentro de etiquetas top level como main, header o footer.
+	</li>
+	
+</ul>
+<br><br>
+
+<h3>Sección imagenes</h3>
+<p>
+	En esta seccion veremos imagenes identificativas de nuestro sitio.
+	<br>
+	La siguiente imagen esta insertada en tamaño natural
+	<br>
+	<img src="./Sinatra.jpg" alt="foto Sinatra"/>
+	<br>
+	La misma imagen, foto de Sinatra (360px por 400px), con distinros atributos width:
+	<br><br>
+	De acuerdo con la dimension de la imagen, solo la primera no pixelara <br><br>
+	Cada elemrnto img se ubica al lado del anterior hasta completar el ancho de la ventana activo (view port)<br><br>
+	Todas lkas imagenes siguientes se veran deformadas por haber definido doble parametro de estilo (ancho y alto)
+	<br><br>
+	<img alt="Sinatra" style="width: 100px;height: 500px" src="./Sinatra.jpg">
+	<img alt="Sinatra" style="width: 200px;height: 500px" src="./Sinatra.jpg">
+	<img alt="Sinatra" style="width: 300px;height: 500px" src="./Sinatra.jpg">
+	<img alt="Sinatra" style="width: 400px;height: 500px" src="./Sinatra.jpg">
+	<img alt="Sinatra" style="width: 450px;height: 500px" src="./Sinatra.jpg">
+</p>
+<br>
+<hr>
+<h3>Sección de video
+</h3>
+<br>
+	<video src="./Sorpresa.mp4" controls> </video>
+
+	<h2>
+		Anclajes
+		<a id="Anclaje">
+			
+		</a>
+	</h2>
+	<p>
+		Punto de anclado.
+	</p>
+	<h2>
+		Datos del alumno:
+	</h2>
+	<p>
+		Nombre: Ariel Sanguin<br>
+		Mail: ariel.sanguin@gmail.com
+
+	</p>
+
+</body>
+</html>

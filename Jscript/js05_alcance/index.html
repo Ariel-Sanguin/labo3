@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Alcance</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<button id="asigIncorrecta" onclick="variableIncorrecta()">Inicializacion Incorrecta</button>
+	<button id="asicCorrecta" onclick="variableCorrecta()">Inicializacion correcta</button>
+	<button id="mostrar" onclick="mostrarVariable()">Muestra variable global</button>
+
+	<script type="text/javascript">
+		var variable = null;
+		function variableIncorrecta(){
+			var variable = prompt('Ingrese valor de la variable global');
+			alert('Valor ingresado: '+ variable);
+			alert('Tipo de la variable: '+ typeof(variable));
+		}
+
+		function variableCorrecta(){
+			variable = prompt('Ingrese valor de la variable global');
+			alert('Valor Ingresado: '+ variable);
+			alert('Tipo de la variable: '+ typeof(variable));
+		}
+
+		function mostrarVariable(){
+			if(variable == null){
+				alert('la variable no ha sido asignada');
+			}
+			else {
+				alert('El valor de la varibale global es: '+ variable);
+			}
+		}
+
+
+	</script>
+</body>
+</html>

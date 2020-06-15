@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		html, body {
+			height:100%;
+			margin:0px;
+			padding:0;
+			box-sizing:border-box;
+		}
+		
+		
+		h1 {
+			font-size: 1.8vw;
+		}
+		
+
+		div.elementoCentrado {
+			position:relative;
+			color:white;
+			
+			height:100%;
+			width:80%;
+			background-color:black;
+			margin:auto;
+			font-weight:bold;
+		}
+
+		div#absoluto1 {
+			position: absolute;
+			top: 30%;
+			left: 0%;
+			width: 15%;
+			height: 30%;
+			background-color: darkred;
+			overflow: auto;
+			font-size: 1vw% 
+		}
+
+		div#absoluto2 {
+			position: absolute;
+			top: 50%;
+			right: 0%;
+			width: 45%;
+			height: 40%;
+			background-color: red;
+			overflow: auto;
+			font-size: 1vw%;
+			padding: 2px;
+			box-sizing: border-box; 	
+		}
+
+		div#absoluto3 {
+			color: black;
+			position: absolute;
+			top: 20%;
+			right: 20%;
+			left: 40%;
+			z-index: 10;
+			width: 30%;
+			height: 55%;
+			background-color: purple;
+			overflow: auto;
+			font-size: 1vw;
+			opacity: 0.5;
+			visibility: visible;
+		}
+		img {
+			max-width: 30%;
+			max-height: 80%;
+
+		}
+
+		
+
+	</style>
+</head>
+<body>
+	<div class="elementoCentrado">
+
+		<div id="absoluto1"><h1>Contenedor interno 1</h1><br>
+			Probando, probando, probando, probando
+		</div>
+		<div id="absoluto2">
+			<h1>Contenedor interno 2</h1>
+			<img src="./wolf2.jpg">
+			<img src="./wolf2.jpg">
+			<img src="./wolf2.jpg">	
+		</div>
+		
+		<div id="absoluto3">
+			<h1>Contenedor interno 3</h1>
+			Probando, probando, probando, probando
+		</div>
+
+	</div>
+
+</body>
+</html>

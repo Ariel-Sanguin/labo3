@@ -1,0 +1,16 @@
+h1 {
+	text-align: center;
+	font-size: 35px;
+	color: darkred;
+}
+
+p {
+	text-align: left;
+	font-size: 15px;
+	color: darkblue;
+	font-style: italic;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-width: thin;
+	border-color: black;
+}
