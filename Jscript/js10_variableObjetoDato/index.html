@@ -98,15 +98,20 @@
 				return;
 			}
 			arregloPersonas.push({nombre: nombre, apellido: apellido, fechaNac: fechaNac});
+			document.getElementById("nombre").value ="";
+			document.getElementById("apellido").value ="";
+			nacimiento.value="";
 			
 		}
 
 		document.getElementById("ver").onclick = function(){
 			var draw_table = draw_table_top;
 			arregloPersonas.forEach(function(item, index){ draw_table += "<tr><td>"+ item.nombre + "</td><td>" + item.apellido + "</td><td>" + item.fechaNac + "</td></tr>";});
-			draw_table += draw_table_bottom;
+			draw_table += draw_table_bottom + "<p>Cantidad de elementos: "+ arregloPersonas.length + "</p>";
+
 			document.getElementById("divtabla").innerHTML = draw_table;
             document.getElementById("divtabla").style = "display:unset";
+
 		}
 
 		document.getElementById("ocultar").onclick = function(){
