@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Convertir a mayuscula</title>
+	<style type="text/css">
+		.contnedor {
+			margin: auto;
+        	background-color: lightblue;
+        	width: 250px;
+        	height: 80px;
+		}
+		.entrada {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+		}
+		h1 {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Convertidor a mayuscula</h1>
+	<div class="contnedor">
+		<div class="entrada">
+			<label>Nombre <input type="text" id="nombre" ></label>
+			<label>Apellido <input type="text" id="apellido" ></label>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.getElementById("nombre").onchange = function(){
+			this.value = this.value.toUpperCase();
+		}
+		document.getElementById("apellido").onchange = function(){
+			this.value = this.value.toUpperCase();
+		}
+	</script>
+</body>
+</html>

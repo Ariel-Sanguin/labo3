@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VariableObjetoDato</title>
+	<style type="text/css">
+		.contnedor {
+			margin: auto;
+        	background-color: lightblue;
+        	width: 80%;
+        	height: auto;
+		}
+		.entrada {
+			width: auto;
+			height: auto;
+			margin: 5px;
+			display: flex;
+			/*flex-wrap: wrap;*/
+			justify-content: flex-start;
+			align-items: center;
+		}
+		div.nuevafila {
+			clear: both;
+		}
+		h1 {
+			text-align: center;
+		}
+
+		.contenedor2 {
+			margin: auto;
+			background-color: lightyellow;
+			width: 80%;
+			height: auto;
+		}
+
+		table, tr,td {
+			border:solid;
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Variable objeto datos</h1>
+	<div class="contnedor">
+		<div class="entrada">
+			<label>Nombre <br><input type="text" id="nombre" title="complete con su nombre"></label>
+		</div>
+		<div class="nuevafila"></div>
+		<div class="entrada">
+			<label>Apellido <br><input type="text" id="apellido" title="complete con su apellido"></label>
+		</div>
+		<div class="nuevafila"></div>
+		<div class="entrada">
+			<label>Fecha de nacimiento <br><input type="text" id="nacimiento" title="complete con su fecha de nacimiento" placeholder="xx/xx/xxxx"></label>
+		</div>
+		<div class="nuevafila"></div>
+		<div class="entrada">
+			<button id="cargar">Crear persona </button>
+		</div>	
+	</div>
+	<div class="contenedor2">
+		<h1>Control</h1>
+		<div class="entrada">
+			<button id="ver" class="btnControl">Lista de personas</button>
+			<button id="ocultar" class="btnControl">Ocultar lista</button>
+		</div>
+	</div>
+
+	<div id="divtabla" class="divtabla"></div>
+		
+	</div>
+
+	<script type="text/javascript">
+		var objetoPersona = {};
+		var objetoPersona = {nombre:"Ariel", apellido:"Sanguin", fechaNac:"25/04/1989"};
+		var arregloPersonas =[objetoPersona];
+		arregloPersonas.push({nombre:"Jose", apellido:"Santos", fechaNac:"18/08/1959"});
+
+		var draw_table_top =    "<h2>Lista de personas dadas de alta</h2>"+"<table>";
+        var draw_table_bottom = "</table>";
+
+		document.getElementById("cargar").onclick = function(){
+			var nombre = document.getElementById("nombre").value;
+			if (nombre=="") {
+				alert("No completo el campo nombre");
+				return;
+			}
+			var apellido = document.getElementById("apellido").value;
+			if (apellido=="") {
+				alert("No completo el campo apellido");
+				return;
+			}
+			var fechaNac = document.getElementById("nacimiento").value;
+			if (fechaNac=="") {
+				alert("No completo su fecha de nacimiento");
+				return;
+			}
+			arregloPersonas.push({nombre: nombre, apellido: apellido, fechaNac: fechaNac});
+			
+		}
+
+		document.getElementById("ver").onclick = function(){
+			var draw_table = draw_table_top;
+			arregloPersonas.forEach(function(item, index){ draw_table += "<tr><td>"+ item.nombre + "</td><td>" + item.apellido + "</td><td>" + item.fechaNac + "</td></tr>";});
+			draw_table += draw_table_bottom;
+			document.getElementById("divtabla").innerHTML = draw_table;
+            document.getElementById("divtabla").style = "display:unset";
+		}
+
+		document.getElementById("ocultar").onclick = function(){
+			document.getElementById("divtabla").style = "display:none";
+		}
+
+
+	</script>
+</body>
+</html>
