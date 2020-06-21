@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Confirmacion</title>
+	<style type="text/css">
+		.contenedor {
+			background-color: lightblue;
+			margin: auto;
+			width: 80%;
+			height: auto;
+		}
+		.contenido {
+			width: auto;
+			height: auto;
+			margin: 5px;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.nuevafila {
+			clear: both;
+		}
+		.botonera {
+			padding-top: 45px;
+			padding-bottom: 45px;
+			text-align: center;
+		}	
+	</style>
+</head>
+
+<body>
+
+	<div class="contenedor">
+		<h2>Confirmacion de envio y reset</h2>
+		<form id="formulario">
+			<div class="contenido">
+				<label>Nombre <br><input type="text" title="Complete con su nombre" id="nombreForm"></label>
+			</div>
+			<div class="nuevafila"></div>
+			<div class="contenido">
+				<label>Apellido<br><input type="text" title="COmplete con su apellido" id="apellidoForm"></label>
+			</div>
+		</form>
+		<div class="botonera">
+			<button id="btnBorrar" onclick="borra()">Borrar</button>
+			<button id="btnEnviar" onclick="envia()">Enviar</button>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	function envia(){
+		var confirmar = confirm("Desea enviar estos datos?");
+		if (!confirmar) { return;}
+
+		var localform = document.getElementById("formulario");
+		localform.method = "get";
+		localform.action = "./respuestaFormulario.html";
+		localform.submit();
+	}
+	function borra(){
+		var confirmar = confirm("Desea resetear el formulario?");
+		if (confirmar) {
+			var localform = document.getElementById("formulario");
+		localform.reset();
+		}
+
+		return;
+	}
+</script>
+</html>
