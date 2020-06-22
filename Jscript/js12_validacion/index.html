@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Validacion</title>
+	<style type="text/css">
+		.contenedor {
+			background-color: lightblue;
+			margin: auto;
+			width: 80%;
+			height: auto;
+		}
+		.contenido {
+			width: 100%;
+			height: auto;
+			margin: 5px;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.nuevafila {
+			clear: both;
+		}
+		.botonera {
+			padding-top: 45px;
+			padding-bottom: 45px;
+			text-align: center;
+		}
+		.botonera {
+			padding-top: 45px;
+			padding-bottom: 45px;
+			text-align: center;
+		}	
+
+		input {
+			width: 110px;
+		}	
+	</style>
+</head>
+<body>
+	<h1>Validacion de un INPUT</h1>
+
+	<div class="contenedor">
+		<form id="formulario1">
+			<div class="contenido">
+				<label>Ingrese el dia del mes<br><input type="number" title="dia del mes" id="dia" min="1" max="31"></label>
+			</div>
+			<div class="nuevafila"></div>
+			<div class="contenido">
+				<label>Ingrese el mes<br><input type="number" title="mes del año" id="mes" min="1" max="12"></label>
+			</div>
+			<div class="nuevafila"></div>
+			<div class="botonera">
+				<button id="btnBorrar" onclick="borra()">Borrar</button>
+				<button id="btnEnviar" onclick="envia()">Enviar</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	
+	document.getElementById("dia").onkeyup = function (){
+		var diatemp = document.getElementById("dia");
+		if (!diatemp.checkValidity()){
+			alert("Debe ingresar un valor dentro del rango 1-31");
+			diatemp.value = "";
+		}
+	}
+
+	document.getElementById("mes").onkeyup = function (){
+		var mestemp = document.getElementById("mes");
+		if (!mestemp.checkValidity()){
+			alert("Debe ingresar un valor dentro del rango 1-12");
+			mestemp.value = "";
+		}
+	}
+
+	function envia(){
+		var confirmar = confirm("Desea enviar estos datos?");
+		if (!confirmar) { return;}
+
+		var localform = document.getElementById("formulario1");
+		localform.method = "get";
+		localform.action = "./respuestaFormulario.html";
+		localform.submit();
+	}
+	function borra(){
+		var confirmar = confirm("Desea resetear el formulario?");
+		if (confirmar) {
+			var localform = document.getElementById("formulario1");
+			localform.reset();
+		}
+
+		return;
+	}
+</script>
+</html>
