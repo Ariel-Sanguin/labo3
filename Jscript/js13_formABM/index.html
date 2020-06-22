@@ -67,19 +67,19 @@
     Well it's been ten years, and a thousand tearsAnd look at the mess I'm inA broken nose and a broken heart,An empty bottle of gin, Well I sit and I pray, In my broken down Chevrolet, While I'm singin' to myself, There's got to be another way, Take away, take away, Take away this ball and chain, I'm lonely and I'm tired, And I can't take any more pain, Take away, take away, Never to return again, Take away, take away, Take away this ball and chain, Well I've searched and I've searched, To find the perfect life-, A brand new car and a brand new suit, I even got me a little wife, But wherever I have gone, I was sure to find myself there, You can run all your life, But not go anywhere, Take away, take away, Take away this ball and chain, I'm lonely and I'm tired, And I can't take any more pain, Take away, take away, Never to return again, Take away, take away, Take away this ball and chain, Well I'll pass the bar on the way, To my dingy hotel room, I spent all my money, Been drinkin' since a half past noon, I'll wake there in the mornin', Or maybe in the county jail, Times are hard getting harder, I'm born to lose and destined to fail, Take away, take away, Take away this ball and chain, I'm lonely and I'm tired, And I can't take any more pain, Take away, take away, Never to return again, Take away, take away, Take away this ball and chain<br>
     Well it's been ten years, and a thousand tearsAnd look at the mess I'm inA broken nose and a broken heart,An empty bottle of gin, Well I sit and I pray, In my broken down Chevrolet, While I'm singin' to myself, There's got to be another way, Take away, take away, Take away this ball and chain, I'm lonely and I'm tired, And I can't take any more pain, Take away, take away, Never to return again, Take away, take away, Take away this ball and chain, Well I've searched and I've searched, To find the perfect life-, A brand new car and a brand new suit, I even got me a little wife, But wherever I have gone, I was sure to find myself there, You can run all your life, But not go anywhere, Take away, take away, Take away this ball and chain, I'm lonely and I'm tired, And I can't take any more pain, Take away, take away, Never to return again, Take away, take away, Take away this ball and chain, Well I'll pass the bar on the way, To my dingy hotel room, I spent all my money, Been drinkin' since a half past noon, I'll wake there in the mornin', Or maybe in the county jail, Times are hard getting harder, I'm born to lose and destined to fail, Take away, take away, Take away this ball and chain, I'm lonely and I'm tired, And I can't take any more pain, Take away, take away, Never to return again, Take away, take away, Take away this ball and chain<br>
     <div class="contenedor">
-        <h1>NO FUNCIONA</h1>
+    
         <form id="formulario">
             <div class="contenido">
                 <h3>FORMULARIO ABM</h3>
-                <label>Nombre<br><input required=required  type="text" id="nombre" ></label>
+                <label>Nombre<br><input   required type="text"  id="nombre" ></label>
             </div>
             <div class="nuevafila"></div>
             <div class="contenido">
-                <label>Apellido<br><input requiered=requiered type="text" id="apellido" ></label>
+                <label>Apellido<br><input  requiered type="text"   id="apellido" ></label>
             </div>
             <div class="nuevafila"></div>
             <div class="contenido">
-                <label>Saldo<br><input type="number" id="saldo" min="100"></label>
+                <label>Saldo<br><input  required type="number" id="saldo" min="100" ></label>
             </div>
             <div class="nuevafila"></div>
             <div class="botonera">
@@ -105,6 +105,20 @@
             document.getElementById("baja").disabled=true;
             document.getElementById("modi").disabled=true;
         }
+        
+
+        function controla(){
+            var localNom = document.getElementById("nombre");
+            var localApe = document.getElementById("apellido");
+            var localSal = document.getElementById("saldo");
+
+            if(localNom.checkValidity() || 
+               localApe.value.length >0 || /*Tuve que usar value.length xq por alguna razon con checkValidity me habilitaba el boton cuandpo los otros campos no cumplian von la condicion para hacerlo*/
+               localSal.checkValidity()){ document.getElementById("blanquea").disabled = false;
+            }
+            else { document.getElementById("blanquea").disabled = true;}
+        }
+        
         document.getElementById("saldo").onkeyup = function () {
             controla();
         }
@@ -116,57 +130,6 @@
         document.getElementById("apellido").onkeyup = function () {
             controla();
         }
-
-        function blanquear() {
-            objBtBlanquea.onclick = function() {
-                formulario.reset();
-            }
-        }
-
-        function controla() {
-            var n=document.getElementById("nombre").value;
-            var a=document.getElementById("apellido").value;
-            var s=parseInt(document.getElementById("saldo").value);
-            var sa=document.getElementById("saldo").value;
-
-            if(n.length>0 && a.length>0 && saldo.checkValidity()) {
-                document.getElementById("alta")=false;
-                document.getElementById("modi")=false;
-                document.getElementById("baja")=false;
-            } else {
-                alta.disabled=true;
-                modi.disabled=true;
-                baja.disabled=true;
-            }
-
-            if(n.length>0 || a.length>0 ||  sa.length>0) {
-                blanquea.disabled=false;
-            } else {
-                blanquea.disabled=true;
-            }
-
-        }
-
-
-        function alta() {
-            /*document.getElementById("operacion").value="Alta";*/
-            document.getElementById("formulario").method="get"; 
-            document.getElementById("formulario").action="./respuestaFormularioAlta.php";
-            document.getElementById("formulario").submit();
-        }
-
-        function baja() {
-            /*document.getElementById("operacion").value="Baja";*/
-            document.getElementById("formulario").method="get"; 
-            document.getElementById("formulario").action="./respuestaFormularioBaja.php";
-            document.getElementById("formulario").submit();
-        }
-
-        function modifica() {
-            /*document.getElementById("operacion").value="Modifica";*/
-            document.getElementById("formulario").method="get"; 
-            document.getElementById("formulario").action="./respuestaFormularioModificacion.php";
-            document.getElementById("formulario").submit();
-        }
+        
     </script>
 </html>
