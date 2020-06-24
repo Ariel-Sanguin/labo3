@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<style type="text/css">
+		 
+		.principal {
+            position: fixed;
+            background-color: purple;
+            top: 20%;
+            left: 20%;
+            margin: auto;
+            width: 60%;
+            height: 50%;
+            overflow: auto;
+            z-index: 5;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        button {
+        	height: 25px;
+        	width: 60px;
+        	background-color: white;
+        	font-weight: bold;
+        }
+
+        .objetoDin {
+        	background-color: lightblue;
+        	color: black;
+        	width: 40%;
+        	height: auto;
+        	border: solid pink;
+        }
+
+
+	</style>
+</head>
+<body bgcolor="black">
+
+	<div>
+		<button id="crea">Crear</button>
+		<button id="borra">Borrar</button>
+		<button id="informa">Info</button>
+
+	</div>
+	<div class="principal" id="contenedor">
+		
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	var num = 0;
+	document.getElementById("crea").onclick = function(){
+
+		var objDiv = document.createElement("div");
+		objDiv.className = "objetoDin";
+		num = document.getElementById("contenedor").childNodes.length;
+		var textoHtml = "<h1>Elemento creado: ";
+		textoHtml = textoHtml + num;//document.getElementById("contenedor").childNodes.length;
+		textoHtml = textoHtml + "</h1>";
+		objDiv.innerHTML = textoHtml;
+		
+
+		document.getElementById("contenedor").appendChild(objDiv);
+	}
+
+	document.getElementById("borra").onclick = function(){
+
+		//var num = document.getElementById("contenedor").childNodes.length;
+		var nodo = document.getElementById("contenedor");
+
+	/*	if(num>0){
+			nodo.removeChild(nodo.lastChild);
+				num=num-1;
+		}*///con este if lo que hago es borrar cada objeto 1 a 1
+
+		while(nodo.firstChild){
+			nodo.removeChild(nodo.lastChild);
+			num = nodo.childNodes.length;
+		}
+	}
+
+	document.getElementById("informa").onclick = function(){
+		//num = document.getElementById("contenedor").childNodes.length;
+
+		 alert("Cantidad de nodos: " + num );
+		 document.getElementById("contenedor").childNodes.forEach((element, index) => {
+        alert("index: " + index + " innerHTML: " + element.innerHTML);
+
+   		 });
+	}
+
+</script>
+</html>

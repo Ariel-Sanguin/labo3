@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Location</title>
+	<style type="text/css">
+		.botonera {
+            
+            padding-top: 45px;
+            padding-bottom: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            box-sizing: border-box;
+        }
+        button {
+            width: 90px;
+            margin: 1%;
+        }   
+    </style>
+</head>
+<body bgcolor="black">
+	<dir class="botonera">
+		<button id="youtube" title="Youtube">Youtube</button>
+		<button id="gmail" title="Gmail">Gmail</button>
+		<button id="mozilla" title="MozillaDev">Mozilla</button>
+
+	</dir>
+
+</body>
+
+<script type="text/javascript">
+	document.getElementById("youtube").onclick = function(){
+		location.href = "https://www.youtube.com/";
+	}
+	document.getElementById("gmail").onclick = function(){
+		window.open("https://mail.google.com/", "_blank");
+	}
+	document.getElementById("mozilla").onclick = function(){
+		location.href = "https://developer.mozilla.org/es/";
+	}
+</script>
+</html>

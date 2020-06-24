@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Conmutacion de clase</title>
+	<style type="text/css">
+		
+		.estilo0 {
+			height: 200px;
+			width:350px;
+			margin: auto;
+			padding-right: 5%;
+			padding-left: 5%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+		}
+		.botonera {
+            
+            padding-top: 45px;
+            padding-bottom: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+		.estilo1 {
+			background-color: black;
+			width: 350px;
+			height: 200px;
+			margin: auto;
+			padding-right: 5%;
+			padding-left: 5%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			color: white;
+			font-size: 15px;
+			font-style: italic;
+			border: solid;
+			font-family: verdana;
+			text-align: center;
+		}
+
+		.lista1 {
+			list-style-type: circle;
+		}
+
+		.estilo2 {
+			background: linear-gradient(white, darkred, black);
+			width: 350px;
+			height: 200px;
+			margin: auto;
+			padding-right: 5%;
+			padding-left: 5%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			color: black;
+			font-size: 15px;
+			font-weight: bold;
+			border: solid;
+			font-family: tahoma;
+			text-align: right;
+		}
+
+		.lista2 {
+			list-style-type: square;
+		} 
+
+		.estilo3 {
+			background-color: purple;
+			width: 350px;
+			height: 200px;
+			margin: auto;
+			padding-right: 5%;
+			padding-left: 5%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			color: black;
+			font-size: 25px;
+			/*font-style: italic;*/
+			border: solid;
+			font-weight: bold;
+			font-style: italic;
+			font-family: arial;
+			text-align: justify;	
+		}
+		.lista3 {
+			list-style-type: lower-alpha;
+		}
+
+		.estilo4 {
+			background: radial-gradient(lightgreen, darkgreen, black);
+			width: 350px;
+			height: 200px;
+			margin: auto;
+			padding-right: 5%;
+			padding-left: 5%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			color: black;
+			font-size: 18px;
+			border-top-left-radius: 14px;
+			border-top-right-radius: 14px;
+			border-bottom-right-radius: 14px;
+			border-bottom-left-radius: 14px;
+			font-family: symbol;
+		}
+		.lista4 {
+			list-style-type: cambodian;
+		} 
+		button {
+			margin: 5px;
+		}      
+	</style>
+</head>
+<body bgcolor="lightblue">
+	<h1>Ejemplos de cambios dinamicos de estilo</h1>
+	<div id="divlista" class="estilo0">
+		<ol id="itemsLista" class="lista0">
+			<h3>Lista con estilo</h3>
+			<li>Texto 1</li>
+			<li>Texto 2</li>
+			<li>Texto 3</li>
+		</ol>	
+	</div>
+
+	<div class="botonera">
+		<button id="btn1">Estilo 1</button>
+		<button id="btn2">Estilo 2</button>
+		<button id="btn3">Estilo 3 </button>
+		<button id="btn4">Estilo 4</button>
+	</div>
+
+
+</body>
+
+<script type="text/javascript">
+	
+	document.getElementById("btn1").onclick = function (){
+		document.getElementById("divlista").className = "estilo1";
+		document.getElementById("itemsLista").className = "lista1";
+	}
+
+	document.getElementById("btn2").onclick = function(){
+		document.getElementById("divlista").className = "estilo2";
+		document.getElementById("itemsLista").className = "lista2";
+	}
+
+	document.getElementById("btn3").onclick = function(){
+		document.getElementById("divlista").className = "estilo3";
+		document.getElementById("itemsLista").className = "lista3";
+	}
+
+	document.getElementById("btn4").onclick = function(){
+		document.getElementById("divlista").className = "estilo4";
+		document.getElementById("itemsLista").className = "lista4";
+	}
+</script>
+</html>
