@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<title></title>
+	<style>
+		html, body {
+			height:100%;
+			margin:0px;
+			box-sizing:border-box;
+			color:white;
+			font-family:calibri;
+		}
+		
+		div.elementoCentrado {
+			height:80%;
+			box-sizing:border-box;
+			color:white;
+			background-color:grey;
+		}
+		
+		div.div1 {
+			font-weight:bold;
+			font-size: 35px;
+			text-align: center;
+			box-sizing:border-box;
+			padding:5px;
+		}
+		div.div3 {
+			font-size:3vw;
+			height:40%;
+			width:50%;
+			box-sizing:border-box;
+			overflow:auto;
+			display: flex;
+			justify-content:center;
+			padding:4%;
+		}
+		div.div2 {
+			font-size:3vw;
+			height:40%;
+			width:50%;
+			box-sizing:border-box;
+			overflow:auto;
+			display: flex;
+			justify-content:left;
+			float:left;
+			padding:2%;
+		}
+		
+		div.elementoOptSelect {			
+			font-size:3vw;
+			height:40%;
+			width:50%;
+			box-sizing:border-box;
+			overflow:auto;
+			display: flex;
+			justify-content:left;
+			float:left;
+			padding:2%;
+		}
+		
+		div.nuevaFila {
+			clear:both;
+			height:100%;
+			width:100%;
+			box-sizing:border-box;
+		}
+		
+		label {
+			font-size:2vw;
+			font-weight:bold;
+		}
+		
+		input,select {
+			box-sizing:border-box;
+			font-size:2vw;
+			font-weight:bold;
+			height:100%;
+			width:100%;
+			color: black;
+			text-align: left;
+		}
+
+		button {
+			padding:1%;
+			font-size:2vw;
+			height:100%;
+			width:80%;
+			font-weight:bold;
+		}
+		
+	</style>
+</head>
+
+<body>
+	
+	<div class="div1">
+		Formulario para Alta - Maestro de Artículos
+	</div>
+	<div class="elementoCentrado">
+	<form id="form" target="">
+		<div class="div2">
+			<div class="nuevaFila">
+				<label for="codigo"> Cod.Art: </label> <br/>
+				<input type="text" id="articulo" name="articulo" title="Ingrese articulo" required=required autofocus="autofocus"> </input>
+			</div>
+		</div>		
+		<div class="div2">
+			<div class="nuevaFila">
+				<label for="opts" id="ops"> Familia de Articulo </label> <br/>
+				<select id="opts" name="opts" required=required title="Seleccione una opcion"> </select>
+			</div>
+		</div>			
+
+		<div class="div2">
+			<div class="nuevaFila">
+				<label for="descripcion"> Descripción: </label> <br/>
+				<input type="text" id="descripcion" name="descripcion" required=required title="Ingrese descripcion"</input> 
+			</div>
+		</div>			
+		<div class="div2">
+			<div class="nuevaFila">
+				<label for="fecha"> Fecha de alta: </label> <br/>
+				<input type="date" id="fecha" name="fecha" value="" required=required title="dd/mm/yyyy"/>
+			</div>
+		</div>			
+		<div class="div2">
+			<div class="nuevaFila">
+				<label for="stock"> Saldo stock: </label> <br/>
+				<input type="number" min="0" id="stock" name="stock" required=required title="Ingrese stock"</input> 
+			</div>
+		</div>			
+			<div class="div3">
+				<button onClick="enviar()">
+					Enviar
+				</button>
+			</div>
+		</form>	
+	</div>
+	<div class="div1">
+		Pie del formulario
+	</div>
+</body>	
+
+<script src="../jquery.js"></script>	
+<script type="text/javascript" src="./opcionesJSON.js"></script>
+<script type="text/javascript">
+	
+	var values = JSON.parse(options);
+	var selectObj = document.getElementById("opts");
+	var newOpt;
+
+	var formulario = document.getElementById("form");
+	formulario.method = "GET";
+	var btnSubmit = document.getElementById("submit");
+
+
+	// (jquerry) Ejecutar Js cuando el doc estÃ© cargado
+	$(document).ready( function() {
+    
+    values.opciones.forEach(element => {
+        
+        // Crear <option</option>
+        newOpt = document.createElement("option");
+
+        // Atributo valor
+        newOpt.setAttribute("value", element.familia);
+
+        // console.log("id: " + element.id + ". Familia: " + element.familia + ". Att valor:" + newOpt.value);
+        
+        // Mostrar uno por default
+        if( parseInt(element.id) == 3 ){
+            newOpt.setAttribute("selected", true);
+        }
+        // Genera y completa Nodo de Texto
+        newOpt.innerHTML = newOpt.value;
+
+        // Agrega el Option al Select
+        selectObj.appendChild(newOpt);   
+    	});
+
+	});
+
+// Limpiar formulario al enviar
+	function enviar() {
+    	formulario.action = './respuestaFormulario.html';
+    	formulario.submit();
+    	formulario.reset();
+	};
+</script>
+</html>

@@ -117,6 +117,17 @@
                localSal.checkValidity()){ document.getElementById("blanquea").disabled = false;
             }
             else { document.getElementById("blanquea").disabled = true;}
+
+            if(localNom.checkValidity() && localApe.checkValidity() && localSal.checkValidity()){
+                document.getElementById("alta").disabled = false;
+                document.getElementById("baja").disabled = false;
+                document.getElementById("modi").disabled = false;
+            }
+            else{
+                document.getElementById("alta").disabled = true;
+                document.getElementById("baja").disabled = true;
+                document.getElementById("modi").disabled = true;
+            }
         }
         
         document.getElementById("saldo").onkeyup = function () {
@@ -129,6 +140,42 @@
         
         document.getElementById("apellido").onkeyup = function () {
             controla();
+        }
+
+        document.getElementById("blanquea").onclick = function (){
+            var localform = document.getElementById("formulario");
+            localform.reset();
+
+            document.getElementById("blanquea").disabled = true;
+            document.getElementById("alta").disabled = true;
+            document.getElementById("baja").disabled = true;
+            document.getElementById("modi").disabled = true;
+        }
+        document.getElementById("alta").onclick = function (){
+            var localform = document.getElementById("formulario");
+
+            localform.method = "get";
+            localform.action = "./formularioAlta.html";
+            localform.target = "_blank";
+            localform.submit();
+        }
+
+        document.getElementById("baja").onclick = function(){
+            var localform = document.getElementById("formulario");
+
+            localform.method = "get";
+            localform.action = "./formularioBaja.html";
+            localform.target = "_blank";
+            localform.submit();
+        }
+
+        document.getElementById("modi").onclick = function(){
+            var localform = document.getElementById("formulario");
+
+            localform.method = "get";
+            localform.action = "./formularioModi.html";
+            localform.target = "_blank";
+            localform.submit();
         }
         
     </script>

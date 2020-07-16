@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ventana Modal</title>
+	<style type="text/css">
+		html, body {
+		    margin: 0;
+		    padding: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-color: lightblue;
+		}  
+		
+		#contenedor {
+			background-color: lightblue;
+			width: 100%;
+			height: 100%;
+		}
+
+		
+		#contenedor h2 {
+		    margin-top: 0;
+		}
+
+		#btnAbrir {
+		    width: 200px;
+		    height: 50px;
+		    
+		}
+
+		#contenedor p code {
+		    font-family: 'Courier New', Courier, monospace;
+		    font-size: 1rem;
+		    font-weight: 600;
+		    color: rgb(80, 80, 80);
+		}
+
+		.activarContenedor {
+		    pointer-events: auto;
+		    opacity: 1;
+		}
+
+		.desactivadoContenedor {
+		    pointer-events: none;
+		    opacity: 0.3;
+		}
+
+
+		/* #####  VENTANA MODAL  ##### */
+		.modalWindowEnabled {
+		    visibility: visible;
+		}
+
+		.modalWindowDisabled {
+		    visibility: hidden;
+		}
+
+		#modalWindow{
+		    position: fixed;
+		    top: 25%;
+		    left: 30%;
+		    width: 40%;
+		    height: 50%;
+		}
+
+		.modalWindowHeader {
+		    width: 100%;
+		    height: 8%;
+		    background-color: darkred;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 0 20px;
+		    box-sizing: border-box;
+		    color: whitesmoke;
+		}
+
+		#closeWindow {
+		    
+		    width: 5%;
+		    height: 90%;
+		    color: grey;
+		    font-weight: 600;
+		    border: none;
+		    margin-left: 10px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		#closeWindow:hover {
+		   background-color: blue;
+		   color: white;
+		}
+
+		/* MW BODY / Form Section */
+		#mwBody {
+		    height: 92%;
+		}
+
+		#mwHeader, 
+		#mwFooter {
+		    height: 10%;
+		    width: 100%;
+		    font-size: 90%;
+		    color: whitesmoke;
+		    background-color: black;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		.formContainer {
+		    width: 100%;
+		    height: 80%;
+		    background-color:black;
+		    display: flex;
+		    align-items: center;
+		}
+
+		form { 
+		    width: 95%;
+		    height: 100%;
+		    margin: auto;
+		    background-color: grey;
+		    display: flex;
+		    justify-content: space-evenly;
+		    align-items: center;
+		    
+		}
+
+		#mwBody h2,
+		#mwBody h3 {
+		    margin: 0 auto;
+		    text-align: center;
+		}
+
+		#col-izq, #col-der {
+		    width: 50%;
+		    height: 86%; 
+		    display: flex;
+		    padding-left: 6.5%;
+		    padding-top: 5%;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: flex-start;
+		}
+
+		label {
+		    font-weight: 700;
+		}
+
+		input {
+		    box-sizing: border-box;
+		    width: 80%;
+		    min-width: 40%;
+		    height: 8%;
+		    display: block;
+		    margin-top: 3%;
+		    margin-bottom: 14%;
+		    padding-left: 10px;
+		    font-size: 1.2rem;
+		    /* ... */
+		    min-height: 40px;
+		}
+
+		select {
+		    font-size: 1rem;
+		}
+
+		select, .submit, #date {
+		    box-sizing: border-box;
+		    width: 80%;
+		    min-width: 40%;
+		    height: 8.5%;
+		    display: block;
+		    margin-top: 3%;
+		    margin-bottom: 10%;
+		    padding-left: 10px;
+		    /* ... */
+		    min-height: 40px;
+		}
+
+		#date {
+		    margin-bottom: 17%;
+		}
+
+		#submit {
+		    width: 40%;
+		    min-width: 40%;
+		    align-self: flex-end;
+		    margin-right: 20%;
+		    font-weight: bold;
+		    font-size: 0.9rem;
+		    
+		}
+
+		#submit:hover {
+		    
+		    box-shadow: inset 1px 1px 5px rgb(240, 240, 240);
+		}
+
+		#submit:active {
+		    color: rgb(35, 35, 35);
+		    background-image: linear-gradient(315deg, rgba(214, 214, 214, 0.2), rgba(53, 53, 53, 0.2) );
+		    background-color: rgb(214, 214, 214);
+		    box-shadow: inset 1px 1px 3px rgb(52, 53, 52);
+		}
+
+		#respForm {
+		    text-align: center;
+		    font-family: Verdana, Geneva, Tahoma, sans-serif;
+		    color: rgb(228, 65, 53);
+		}
+	</style>
+	
+</head>
+<body>
+
+	<div id="contenedor">
+		<h1>Div contenedor</h1>
+
+		<button id="btnAbrir">Abrir Div modal</button>
+
+		<h2>Ayudas para el ejercicio</h2>
+		<p>El div contenedor deberá ser desactivado cuando se active la ventana modal.<br>
+		   Desactivar el contenedor podría ser darle tranparencia y deshabilitar todos sus botones<br><br>
+		    <b>Desactivado:</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<code>pointer-events: none</code><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<code>opacity: 0.3</code><br><br>
+            <b>Activado:</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<code>pointer-events: auto</code><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<code>opacity: 1
+		</p>
+	</div>
+
+	<div id="modalWindow" class="modalWindowDisabled">
+        <div class="modalWindowHeader">
+            <h3>Encabezado modal</h3>
+                <!-- <div class="botonesModal"> -->
+                    <!-- <button id="volver"><</button> -->
+            <button id="closeWindow">x</button>
+                <!-- </div> -->
+        </div>
+
+        <div id="mwBody">
+            <div id="mwHeader">
+                <h2>Formulario para Alta - Maestro de Artículos</h2>
+            </div>
+        
+	        <div class="formContainer" id="formContainer">
+    	        <form id="form">
+                    <div id="col-izq">
+                        <label for="codigo" id="codArt">Código del Artículo</label>
+                        <input type="text" name="codigo" id="codigo" required autofocus>
+        
+                        <label for="description" id="descr">Descripción</label>
+                        <input type="text" name="description" id="description" required>
+        
+                        <label for="stock" id="saldo">Stock</label>
+                        <input type="text" name="stock" id="stock" required placeholder="0">
+                    </div>
+                        
+                    <div id="col-der">
+                        <label for="opts" id="ops">Familia de artículos</label>
+                        <select name="opts" id="opts" required>
+        
+                        </select>
+        
+                        <label for="date" id="fechaAlta">Fecha alta</label>
+                        <input type="date" name="date" id="date" required>
+                            
+                        <button class="submit" id="submit">ENVIAR</button>
+                    </div>
+                </form>
+            </div>
+        
+        	<div id="mwFooter">
+           	 	<h3>Pie de formulario</h3>
+        	</div>
+        </div>
+    </div>
+</body>
+
+<script src="../jquery.js"></script>
+<script type="text/javascript" src="./opcionesJSON.js"></script>
+<script type="text/javascript">
+	
+	var values = JSON.parse(options);
+	var selectObj = document.getElementById("opts");
+	var newOpt;
+
+	var abrirForm = document.getElementById("btnAbrir");
+	var formulario = document.getElementById("form");
+	formulario.method = "GET";
+	var btnSubmit = document.getElementById("submit");
+
+	var close = document.getElementById("closeWindow");
+
+	close.onclick = function (){
+		document.getElementById("modalWindow").className ="modalWindowDisabled";
+		document.getElementById("contenedor").className = "activarContenedor";
+		
+	}	
+	abrirForm.onclick  = function(){
+		document.getElementById("modalWindow").className = "modalWindowEnabled";
+		document.getElementById("contenedor").className = "desactivadoContenedor";
+	}
+	
+	$(document).ready( function() {
+    
+    values.opciones.forEach(element => {
+        
+        // Crear <option</option>
+        newOpt = document.createElement("option");
+
+        // Atributo valor
+        newOpt.setAttribute("value", element.familia);
+
+        // console.log("id: " + element.id + ". Familia: " + element.familia + ". Att valor:" + newOpt.value);
+        
+        // Mostrar uno por default
+        if( parseInt(element.id) == 1 ){
+            newOpt.setAttribute("selected", true);
+        }
+        // Genera y completa Nodo de Texto
+        newOpt.innerHTML = newOpt.value;
+
+        // Agrega el Option al Select
+        selectObj.appendChild(newOpt);   
+    	});
+
+	});	
+
+	document.getElementById("submit").onclick = function(){
+		formulario.action = "./respFormu.html";
+		formulario.submit();
+		formulario.reset();
+	}
+</script>
+</html>

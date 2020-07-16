@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		html, body {
+   			box-sizing: border-box;
+    		margin: 0;
+    		padding: 0;
+		    width: 100%;
+		    height: 100%;
+		    color: rgb(65, 65, 65);
+		}
+
+		header, footer {
+		    height: 10%;
+		    color: whitesmoke;
+		    background-color: black;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		h2, h3 {
+    		margin: 0 auto;
+    		text-align: center;
+		}
+
+		#btnContainer {
+    		padding: 0;
+		    margin: 0;
+		    width: 25%;
+		    min-width: 175px;
+		    height: 10%;
+		    z-index: 1;
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    display: flex;
+		    justify-content: space-evenly;
+		    align-items: center; 
+		}
+
+		button {
+    		width: 40%;
+		    min-width: 80px;
+		    height: 60%;
+		    min-height: auto;
+		    padding: 10px;
+		    font-weight: bold;
+		    font-size: 0.8rem;
+		    background-color: rgb(214, 214, 214);
+		    border-left: 2px solid rgb(240, 240, 240);
+		    border-top: 2px solid rgb(240, 240, 240);
+		    border-right: 2px solid rgb(122, 122, 122);
+		    border-bottom: 2px solid rgb(122, 122, 122);
+		}
+
+		button:hover {
+    		background-color: rgb(240, 240, 240);
+    		color: rgb(35, 35, 35);
+    		box-shadow: inset 1px 1px 5px rgb(240, 240, 240);
+		}
+
+		button:active {
+		    color: rgb(35, 35, 35);
+		    background-image: linear-gradient(315deg, rgba(214, 214, 214, 0.2), rgba(53, 53, 53, 0.2) );
+		    background-color: rgb(214, 214, 214);
+		    border-left: 3px solid rgb(82, 82, 82);
+		    border-top: 3px solid rgb(82, 82, 82);
+		    border-right: 3px solid rgb(240, 240, 240);
+		    border-bottom: 3px solid rgb(240, 240, 240);
+		    box-shadow: inset 1px 1px 3px rgb(52, 53, 52);
+		}
+
+		.tableContainer {
+    		width: 100%;
+    		height: 80%;
+    		margin: 0;
+    		padding: 0;
+    		background-color: rgb(214, 214, 214);
+		}
+
+		table {
+		    width: 100%;
+		    height: 100%;
+		    border-collapse: collapse;
+		    /* background-color: tomato; */
+		}
+
+		tfoot td {
+    		text-align: center;
+		}
+
+		thead th, tfoot td {
+		    border: 2px solid pink;
+		    background-color: purple;
+		    color: white;
+		}
+
+		tbody {
+		    height: 85.7%;
+		    display: block;
+		    overflow-y: auto;
+		    /* background-color: violet; */
+		}
+
+		thead, tbody tr, tfoot {
+		    display: table;
+		    width: 100%;
+		    table-layout: fixed;
+		    height: 7%;
+		}
+
+		tbody tr:nth-child(odd) {
+    		background-color: lightblue;
+		}
+
+		tbody tr:nth-child(even) {
+    		background-color: lightyellow;
+		}
+
+		tbody td {
+    		padding-left: 1.2%;
+    		text-align: left;
+		}
+
+		
+	</style>
+	<title></title>
+</head>
+<body>
+	<header>
+            <h2>Artículos</h2>
+            <div id="btnContainer">
+                <button id="cargar">Cargar Datos</button>
+                <button id="ocultar">Ocultar Datos</button>
+            </div>
+    </header>
+
+        <div class="tableContainer">
+            <table id="tabla">
+                <thead>
+                    <tr>
+                        <th campo-dato="codigo">Cod. Art.</th>
+                        <th campo-dato="familia">Familia</th>
+                        <th campo-dato="um">UM</th>
+                        <th campo-dato="descripcion">Descripción</th>
+                        <th campo-dato="fechaAlta">Fecha Alta</th>
+                        <th id="saldo">Saldo / Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td campo-dato="codigo">s codArt</td>
+                        <td campo-dato="familia">s familia</td>
+                        <td campo-dato="um">s um</td>
+                        <td campo-dato="descripcion">s descripción</td>
+                        <td campo-dato="fechaAlta">s fechaAlta</td>
+                        <td id="saldo">s saldoStock</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+</body>
+<script src="../jquery.js"></script>
+<script src="./articulosJSON.js"></script>
+
+<script type="text/javascript">
+	var btnCargar = document.getElementById("cargar");
+	var btnOcultar = document.getElementById("ocultar");
+	var tblBody = document.getElementById("cuerpoTabla");
+	var arts = JSON.parse(articulos);
+
+	var newRow;
+	var newCell;
+	var cargado = 0;  // *1: soluc. temp.
+
+	btnCargar.onclick = function() {
+	    // *1: Solucion temporal para que no vuelva a cargar los datos una vez mostrados
+	    if(cargado == 0) {
+	        arts.opciones.forEach(element => {
+	        
+	            // Crea nueva fila
+	            newRow = document.createElement("tr");
+
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "codigo")
+	            newCell.innerHTML = element.codigo;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "familia")
+	            newCell.innerHTML = element.famila;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "um")
+	            newCell.innerHTML = element.UM;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "descripcion")
+	            newCell.innerHTML = element.Descripcion;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "fechaAlta")
+	            newCell.innerHTML = element.Fecha;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "saldo")
+	            newCell.innerHTML = element.Stock;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+
+	            // Agrega fila a cuerpo tabla
+	            tblBody.appendChild(newRow);
+	        });
+	        // *1: soluc. temp.
+	        cargado++;
+	    }
+	}
+
+	btnOcultar.onclick = function() {
+	    // *1: soluc. temp.
+	    cargado = 0;
+	    // Vaciar tbody (jquerry)
+	    $('#tabla tbody').empty();  
+	}
+</script>
+</html>

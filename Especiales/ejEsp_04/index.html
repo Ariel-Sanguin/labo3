@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		html, body {
+   			box-sizing: border-box;
+    		margin: 0;
+    		padding: 0;
+		    width: 100%;
+		    height: 100%;
+		    color: rgb(65, 65, 65);
+		}
+
+		header, footer {
+		    height: 10%;
+		    color: whitesmoke;
+		    background-color: black;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		h2, h3 {
+    		margin: 0 auto;
+    		text-align: center;
+		}
+		#contenedor {
+			width: 100%;
+			height: 100%;
+			background-color: black;
+		}
+		#btnContainer {
+    		padding: 0;
+		    margin: 0;
+		    width: 25%;
+		    min-width: 175px;
+		    height: 10%;
+		    z-index: 1;
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    display: flex;
+		    justify-content: space-evenly;
+		    align-items: center; 
+		}
+
+		button {
+    		width: 40%;
+		    min-width: 80px;
+		    height: 50%;
+		    min-height: auto;
+		    padding: 10px;
+		    margin: 10px;
+		    font-weight: bold;
+		    font-size: 0.55rem;
+		    background-color: rgb(214, 214, 214);
+		    border-left: 2px solid rgb(240, 240, 240);
+		    border-top: 2px solid rgb(240, 240, 240);
+		    border-right: 2px solid rgb(122, 122, 122);
+		    border-bottom: 2px solid rgb(122, 122, 122);
+		}
+
+		button:hover {
+    		background-color: rgb(240, 240, 240);
+    		color: rgb(35, 35, 35);
+    		box-shadow: inset 1px 1px 5px rgb(240, 240, 240);
+		}
+
+		button:active {
+		    color: rgb(35, 35, 35);
+		    background-image: linear-gradient(315deg, rgba(214, 214, 214, 0.2), rgba(53, 53, 53, 0.2) );
+		    background-color: rgb(214, 214, 214);
+		    border-left: 3px solid rgb(82, 82, 82);
+		    border-top: 3px solid rgb(82, 82, 82);
+		    border-right: 3px solid rgb(240, 240, 240);
+		    border-bottom: 3px solid rgb(240, 240, 240);
+		    box-shadow: inset 1px 1px 3px rgb(52, 53, 52);
+		}
+
+		.tableContainer {
+    		width: 100%;
+    		height: 80%;
+    		margin: 0;
+    		padding: 0;
+    		background-color: rgb(214, 214, 214);
+		}
+
+		table {
+		    width: 100%;
+		    height: 100%;
+		    border-collapse: collapse;
+		    /* background-color: tomato; */
+		}
+
+		tfoot td {
+    		text-align: center;
+		}
+
+		thead th, tfoot td {
+		    border: 2px solid pink;
+		    background-color: purple;
+		    color: white;
+		}
+
+		tbody {
+		    height: 85.7%;
+		    display: block;
+		    overflow-y: auto;
+		    /* background-color: violet; */
+		}
+
+		thead, tbody tr, tfoot {
+		    display: table;
+		    width: 100%;
+		    table-layout: fixed;
+		    height: 7%;
+		}
+
+		tbody tr:nth-child(odd) {
+    		background-color: lightblue;
+		}
+
+		tbody tr:nth-child(even) {
+    		background-color: lightyellow;
+		}
+
+		tbody td {
+    		padding-left: 1.2%;
+    		text-align: left;
+		}
+
+		.activarContenedor {
+		    pointer-events: auto;
+		    opacity: 1;
+		}
+
+		.desactivadoContenedor {
+		    pointer-events: none;
+		    opacity: 0.3;
+		}
+
+
+		/* #####  VENTANA MODAL  ##### */
+		.modalWindowEnabled {
+		    visibility: visible;
+		}
+
+		.modalWindowDisabled {
+		    visibility: hidden;
+		}
+
+		#modalWindow{
+		    position: fixed;
+		    top: 25%;
+		    left: 30%;
+		    width: 40%;
+		    height: 50%;
+		}
+
+		.modalWindowHeader {
+		    width: 100%;
+		    height: 8%;
+		    background-color: darkred;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 0 20px;
+		    box-sizing: border-box;
+		    color: whitesmoke;
+		}
+		#closeWindow {
+		    
+		    width: 0.03%;
+		    height: 90%;
+		    color: grey;
+		    font-weight: 600;
+		    border: none;
+		    margin-left: 10px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		#closeWindow:hover {
+		   background-color: blue;
+		   color: white;
+		   font-size: 80%;
+		}
+
+		/* MW BODY / Form Section */
+		#mwBody {
+		    height: 92%;
+		}
+
+		#mwHeader, 
+		#mwFooter {
+		    height: 10%;
+		    width: 100%;
+		    font-size: 90%;
+		    color: whitesmoke;
+		    background-color: black;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		.formContainer {
+		    width: 100%;
+		    height: 80%;
+		    background-color:black;
+		    display: flex;
+		    align-items: center;
+		}
+
+		form { 
+		    width: 95%;
+		    height: 100%;
+		    margin: auto;
+		    background-color: grey;
+		    display: flex;
+		    justify-content: space-evenly;
+		    align-items: center;
+		    
+		}
+
+		#mwBody h2,
+		#mwBody h3 {
+		    margin: 0 auto;
+		    text-align: center;
+		}
+
+		#col-izq, #col-der {
+		    width: 50%;
+		    height: 86%; 
+		    display: flex;
+		    padding-left: 6.5%;
+		    padding-top: 5%;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: flex-start;
+		}
+
+		label {
+		    font-weight: 700;
+		    color: black;
+		}
+
+		input {
+		    box-sizing: border-box;
+		    width: 80%;
+		    min-width: 40%;
+		    height: 1%;
+		    display: block;
+		    margin-top: 3%;
+		    margin-bottom: 8%;
+		    padding-left: 10px;
+		    font-size: 1.2rem;
+		    /* ... */
+		    min-height: 40px;
+		}
+
+		select {
+		    font-size: 1rem;
+		}
+
+		select, .submit, #date {
+		    box-sizing: border-box;
+		    width: 80%;
+		    min-width: 40%;
+		    height: 2%;
+		    display: block;
+		    margin-top: 3%;
+		    margin-bottom: 8%;
+		    padding-left: 10px;
+		    /* ... */
+		    min-height: 40px;
+		}
+
+		#date {
+		    margin-bottom: 17%;
+		}
+
+		#submit {
+		    width: 40%;
+		    min-width: 40%;
+		    align-self: flex-end;
+		    margin-right: 20%;
+		    font-weight: bold;
+		    font-size: 0.9rem;
+		    
+		}
+
+		#submit:hover {
+		    
+		    box-shadow: inset 1px 1px 5px rgb(240, 240, 240);
+		}
+
+		#submit:active {
+		    color: rgb(35, 35, 35);
+		    background-image: linear-gradient(315deg, rgba(214, 214, 214, 0.2), rgba(53, 53, 53, 0.2) );
+		    background-color: rgb(214, 214, 214);
+		    box-shadow: inset 1px 1px 3px rgb(52, 53, 52);
+		}
+
+		#respForm {
+		    text-align: center;
+		    font-family: Verdana, Geneva, Tahoma, sans-serif;
+		    color: rgb(228, 65, 53);
+		}
+		
+	</style>
+	<title></title>
+</head>
+<body>
+	<div id="contenedor">
+		<header>
+            <h2>Artículos</h2>
+            <div id="btnContainer">
+                <button id="cargar">Cargar Datos</button>
+                <button id="ocultar">Ocultar Datos</button>
+                <button id="btnAbrir">Abrir div modal</button>
+            </div>
+	    </header>
+
+        <div class="tableContainer">
+            <table id="tabla">
+                <thead>
+                    <tr>
+                        <th campo-dato="codigo">Cod. Art.</th>
+                        <th campo-dato="familia">Familia</th>
+                        <th campo-dato="um">UM</th>
+                        <th campo-dato="descripcion">Descripción</th>
+                        <th campo-dato="fechaAlta">Fecha Alta</th>
+                        <th id="saldo">Saldo / Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td campo-dato="codigo">s codArt</td>
+                        <td campo-dato="familia">s familia</td>
+                        <td campo-dato="um">s um</td>
+                        <td campo-dato="descripcion">s descripción</td>
+                        <td campo-dato="fechaAlta">s fechaAlta</td>
+                        <td id="saldo">s saldoStock</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div> 
+       
+    </div>
+     <div id="modalWindow" class="modalWindowDisabled">
+	        <div class="modalWindowHeader">
+	            <h3>Encabezado modal</h3>
+	                <!-- <div class="botonesModal"> -->
+	                    <!-- <button id="volver"><</button> -->
+	            <button id="closeWindow">x</button>
+	                <!-- </div> -->
+	        </div>
+
+	        <div id="mwBody">
+	            <div id="mwHeader">
+	                <h2>Formulario para Alta - Maestro de Artículos</h2>
+	            </div>
+	        
+		        <div class="formContainer" id="formContainer">
+	    	        <form id="form">
+	                    <div id="col-izq">
+	                        <label for="codigo" id="codArt">Código del Artículo</label>
+	                        <input type="text" name="codigo" id="codigo" required autofocus>
+	        
+	                        <label for="description" id="descr">Descripción</label>
+	                        <input type="text" name="description" id="description" required>
+	        
+	                        <label for="stock" id="saldo">Stock</label>
+	                        <input type="text" name="stock" id="stock" required placeholder="0">
+	                    </div>
+	                        
+	                    <div id="col-der">
+	                        <label for="opts" id="ops">Familia de artículos</label>
+	                        <select name="opts" id="opts" required>
+	        
+	                        </select>
+	        
+	                        <label for="date" id="fechaAlta">Fecha alta</label>
+	                        <input type="date" name="date" id="date" required>
+	                            
+	                        <button class="submit" id="submit">ENVIAR</button>
+	                    </div>
+	                </form>
+	            </div>
+	        
+	        	<div id="mwFooter">
+	           	 	<h3>Pie de formulario</h3>
+	        	</div>
+	        </div>
+    	</div>  
+</body>
+<script src="../jquery.js"></script>
+<script src="./articulosJSON.js"></script>
+<script src="./opcionesJSON.js"></script>
+
+<script type="text/javascript">
+	var btnCargar = document.getElementById("cargar");
+	var btnOcultar = document.getElementById("ocultar");
+	var tblBody = document.getElementById("cuerpoTabla");
+	var arts = JSON.parse(articulos);
+
+	var newRow;
+	var newCell;
+	var cargado = 0;  // *1: soluc. temp.
+
+	btnCargar.onclick = function() {
+	    // *1: Solucion temporal para que no vuelva a cargar los datos una vez mostrados
+	    if(cargado == 0) {
+	        arts.opciones.forEach(element => {
+	        
+	            // Crea nueva fila
+	            newRow = document.createElement("tr");
+
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "codigo")
+	            newCell.innerHTML = element.codigo;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "familia")
+	            newCell.innerHTML = element.famila;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "um")
+	            newCell.innerHTML = element.UM;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "descripcion")
+	            newCell.innerHTML = element.Descripcion;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "fechaAlta")
+	            newCell.innerHTML = element.Fecha;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+	            
+	            // Crea nueva celda
+	            newCell = document.createElement("td");
+	            newCell.setAttribute("campo-dato", "saldo")
+	            newCell.innerHTML = element.Stock;
+	            // Agrega celda a nueva fila
+	            newRow.appendChild(newCell)
+
+	            // Agrega fila a cuerpo tabla
+	            tblBody.appendChild(newRow);
+	        });
+	        // *1: soluc. temp.
+	        cargado++;
+	    }
+	}
+
+	btnOcultar.onclick = function() {
+	    // *1: soluc. temp.
+	    cargado = 0;
+	    // Vaciar tbody (jquerry)
+	    $('#tabla tbody').empty();  
+	}
+
+	var values = JSON.parse(options);
+	var selectObj = document.getElementById("opts");
+	var newOpt;
+
+	var abrirForm = document.getElementById("btnAbrir");
+	var formulario = document.getElementById("form");
+	formulario.method = "GET";
+	var btnSubmit = document.getElementById("submit");
+
+	var close = document.getElementById("closeWindow");
+
+	close.onclick = function (){
+		document.getElementById("modalWindow").className ="modalWindowDisabled";
+		document.getElementById("contenedor").className = "activarContenedor";
+		
+	}	
+	abrirForm.onclick  = function(){
+		document.getElementById("modalWindow").className = "modalWindowEnabled";
+		document.getElementById("contenedor").className = "desactivadoContenedor";
+	}
+	
+	$(document).ready( function() {
+    
+    values.opciones.forEach(element => {
+        
+        // Crear <option</option>
+        newOpt = document.createElement("option");
+
+        // Atributo valor
+        newOpt.setAttribute("value", element.familia);
+
+        // console.log("id: " + element.id + ". Familia: " + element.familia + ". Att valor:" + newOpt.value);
+        
+        // Mostrar uno por default
+        if( parseInt(element.id) == 1 ){
+            newOpt.setAttribute("selected", true);
+        }
+        // Genera y completa Nodo de Texto
+        newOpt.innerHTML = newOpt.value;
+
+        // Agrega el Option al Select
+        selectObj.appendChild(newOpt);   
+    	});
+
+	});	
+
+	document.getElementById("submit").onclick = function(){
+		formulario.action = "./respFormu.html";
+		formulario.submit();
+		formulario.reset();
+	}
+</script>
+</html>
