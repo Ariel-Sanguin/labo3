@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+	<title>Lab3-ejer17Ajax</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<style>
+		html, body {	
+			height:100%;
+			color:white;
+			font-family:calibri;
+			font-size:2vw;
+			text-align:left;
+			font-weight:bold;
+		}
+		
+		form {
+			height:50%;
+			width:100%;
+		}
+		
+		input {
+			font-weight:bold;
+			color: black;
+			text-align: left;
+			text-decoration: none;
+			display: inline-block;
+			font-size:2vw;
+			width:50%;
+			margin:5px;
+		}
+	
+		div.nuevaFila {
+			clear:both;
+			margin:auto;
+			height:100%;
+			width:100%;
+		}
+		
+		span {
+			color: orange;
+		}
+
+		input, label {
+			width:70%;
+			font-weight:bold;
+		}
+
+		div.elementoCentrado {
+			height:100%;
+			width:80%;
+			margin:auto;
+			box-sizing:border-box;
+			color:white;
+		}
+		
+		div.div1 {
+			text-align: left;
+			height:40%;
+			width:30%;
+			background-color:purple;
+			box-sizing:border-box;
+			padding:1.8%;
+			border:solid;
+			margin:auto;
+			float:left;
+		}
+		
+		div.div3 {
+			text-align: left;
+			font-size:1vw;
+			height:40%;
+			width:38%;
+			box-sizing:border-box;
+			padding:1%;
+			background-color:darkblue;
+			border:solid;
+			margin:auto;
+			float:left;
+		}
+
+		div.div3bis {
+			text-align: left;
+			font-size:1vw;
+			height:40%;
+			width:38%;
+			box-sizing:border-box;
+			padding:1%;
+			background-color:orange;
+			border:solid;
+			margin:auto;
+			float:left;
+		}
+		
+		div.div4 {
+			text-align: left;
+			height:40%;
+			width:30%;
+			box-sizing:border-box;
+			padding:1%;
+			background-color:coral;
+			border:solid;
+			margin:auto;
+			float:left;
+		}
+		
+		div.div5 {
+			text-align: left;
+			height:40%;
+			width:68%;
+			box-sizing:border-box;
+			padding:1%;
+			background-color:grey;
+			border:solid;
+			margin:auto;
+			float:left;
+		}
+		
+		div.cuadro {
+			height:40%;
+			width:30%;
+			box-sizing:border-box;
+			padding:1%;
+			background-color:darkred;
+			border:solid;
+			margin:auto;
+			float:left;
+
+		}
+
+		
+		
+
+		div.imagen1 {	
+			height:80%;
+			width:80%;
+			margin:auto;
+			text-align:center;
+		}
+
+		div.imagen1:hover {	
+			height:80%;
+			width:80%;
+			background-image:url("./fecha.jpg");
+			background-repeat:no-repeat;
+			background-size:contain;
+		}
+		
+		button#boton_encriptar {
+			/*background-image:url("./fecha.jpg");*/
+			background-repeat:no-repeat;
+			background-size:contain;
+			height:15%;
+			width:25%;
+			opacity:1;
+			align-self: center;
+		}
+
+		/*button#boton_encriptar:hover {
+			
+			background-repeat:no-repeat;
+			background-size:contain;
+			height:15%;
+			width:25%;
+			opacity:1;
+		}*/
+
+		button#boton_encriptar:active {
+			color:yellow;
+			border-width:3px;
+		}
+		
+	</style>
+</head>
+<body bgcolor="black" lang=ES>
+	<div id="gral" class="elementoCentrado">
+		<div class="div1">
+			>
+				<label for="clave"> Dato de entrada </label> <br/>
+				<input type="text" id="clave" name="clave" required=required title="Ingrese clave a enviar" autofocus="autofocus"> </input>
+				
+			
+		</div>
+		<div class="cuadro">
+			<div>Encriptar</div>
+			<button id="boton_encriptar" title="Enviar">Encriptar
+			</button>
+		</div>
+		
+		<div id="resultado" class="div3">
+					</div>
+		<div class="div4">
+			Estado del requerimiento
+			<div id="estado">
+			</div>
+		</div>
+		<div class="div5">
+		</div>
+	</div>
+</body>
+<script src="../../Especiales/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$('#boton_encriptar').click(function(){
+			$('#resultado').empty();
+			$('#resultado').addClass("div3bis");
+			$('#resultado').html("<h2>Esperando respuesta...</h2>");
+			$('#estado').empty();
+			$('#estado').append();
+		
+			$.ajax({
+				type: 'POST',
+				url: './encriptar.php',
+				data: {clave: $('#clave').val()},
+				success: function(encriptar, estado){
+					$('#resultado').removeClass("div3bis");
+					$('#resultado').html("<h2>Resultado: </h2>" + encriptar);
+
+					$('#estado').append("<h3>"+estado+"</h3>");
+				}
+			});
+		});
+	});
+</script>
+
+</html>
