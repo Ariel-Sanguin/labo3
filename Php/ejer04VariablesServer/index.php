@@ -64,7 +64,7 @@
 
 		echo "<h2>Todas las variables</h2><br><br>";
 		foreach ($_SERVER as $key => $value) {
-			echo $key . "=" . $_SERVER[$key]. "<br";
+			echo $key . "=" . $_SERVER[$key]. "<br>";
 		}
 	?>
 </body>
